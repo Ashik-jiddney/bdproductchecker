@@ -8,10 +8,9 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-    </ul>
-  
-      <button class="btn btn-outline-secondary my-2 my-sm-1" >Login</button>
+    <!-- <ul class="navbar-nav mr-auto">
+    </ul> -->
+      <a class="btn btn-outline-secondary my-2 my-sm-1 ml-auto" href="login.php">Login</a>
   </div>
 </div>
 </nav>
