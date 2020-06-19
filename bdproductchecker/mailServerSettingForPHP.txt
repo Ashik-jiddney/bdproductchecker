@@ -1,0 +1,65 @@
+1st Step php.ini setting
+
+1. Open XAMPP Installation Directory.
+2. Go to C:\xampp\php and open the php.ini file.
+3. Find [mail function] by pressing ctrl + f.
+4. Search and set the following values:
+
+SMTP=smtp.gmail.com
+smtp_port=587
+sendmail_from = YourGmailId@gmail.com
+sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t"
+
+--------------------------------------------------------
+2nd Step sendmail.ini setting
+
+5. Now, go to C:\xampp\sendmail and open sendmail.ini file.
+6. Find [sendmail] by pressing ctrl + f.
+7. Search and set the following values:
+
+smtp_server=smtp.gmail.com
+smtp_port=587
+error_logfile=error.log
+debug_logfile=debug.log
+auth_username=YourGmailId@gmail.com
+auth_password=Your-Gmail-Password
+force_sender=YourGmailId@gmail.com(optional)
+
+-------------------------------------------------------------
+
+Step 3 Turn On Less secure app access
+
+8. GO to your 'mail account' & Click Your 'Name icon'
+9. Click 'Manage Your Account' & redirect to google account
+10. Then GO to 'Security' scroll down & 'Turn On Less secure app access'
+--------------------------------------------------------------------------
+
+#Sample php code for checking
+
+<?php
+ 
+ ini_set('display_error',1);
+ error_reporting( E_ALL );
+ 
+// the message
+$from = "sender mail address";
+$to = "receipient mail address";
+
+$sub = "Sample Mail";
+$msg = "This is Fir Line\nThis is Second Line";
+
+$header = "From: ". $from . " \r\n";
+$header .= "MIME-Version: 1.0" . "\r\n";
+$header .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// use wordwrap() if lines are longer than 70 characters
+$msg = wordwrap($msg,70);
+
+// send email
+if(mail($to,$sub,$msg,$header)){
+echo "The mail message successfully sent.";
+echo "Thank You";
+}
+else echo "Sorry";
+
+?>
