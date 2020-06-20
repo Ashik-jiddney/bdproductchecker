@@ -45,6 +45,8 @@
     	                        <input class="btn btn-outline-primary" type="submit" value="Submit" name="submit" />
                         	</div>
 						</form>
+						<hr>
+						<label>Not found</label>
 					</div>
 				</div>
 			</div>
