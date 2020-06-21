@@ -1,3 +1,7 @@
+<?php 
+require "dao/candidateinfo.dao.php";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,19 +69,19 @@
 									<table class="table bg-white" style="width:100%">
 										<tr>
 											<td class="firstWidth">ID</td>
-											<td class="secondWidth">12345</td>
+											<td class="secondWidth"><?php echo $idno; ?></td>
 										</tr>
 										<tr>
 											<td>Name</td>
-											<td>Mahbubur Rahman</td>
+											<td><?php echo $name; ?></td>
 										</tr>
 										<tr>
 											<td>Email</td>
-											<td>bluemancbm@gmail.com</td>
+											<td><?php echo $email; ?></td>
 										</tr>
 										<tr>
 											<td>Birth Date</td>
-											<td>10-10-2000</td>
+											<td><?php echo $birthdate; ?></td>
 										</tr>
 									</table>
 								</div>	
@@ -106,28 +110,28 @@
 									<button class="btn btn-outline-info mb-3">Interview Information</button>
 									<table class="table bg-white">
 										<tr>
-											<td class="firstWidth">Interview Platform</td>
-											<td class="secondWidth">Zoom</td>
-										</tr>
-										<tr>
 											<td class="firstWidth">Interview Date</td>
-											<td class="secondWidth">1st January, 2020</td>
+											<td class="secondWidth"><?php echo $interview_date; ?></td>
 										</tr>
 										<tr>
 											<td>Interview Time</td>
-											<td>10 am</td>
+											<td><?php echo $interview_time; ?></td>
+										</tr>
+										<tr>
+											<td class="firstWidth">Interview Platform</td>
+											<td class="secondWidth"><?php echo $interview_platform; ?></td>
 										</tr>
 										<tr>
 											<td>Interview Link</td>
-											<td> <a href="http://localhost/interview/candidateinfo.php">Interview Link</a></td>
+											<td> <a href="<?php echo $interview_link; ?>" target="_blank">Interview Link</a></td>
 										</tr>
 										<tr>
 											<td>Meeting ID</td>
-											<td>10-10-2000</td>
+											<td><?php echo $interview_id; ?></td>
 										</tr>
 										<tr>
 											<td >Meeting Password</td>
-											<td >10-10-2000</td>
+											<td ><?php echo $interview_pass; ?></td>
 										</tr>
 									</table>
 								</div>	
@@ -167,11 +171,11 @@
 									<table class="table bg-white">
 										<tr>
 											<td class="firstWidth">Status</td>
-											<td class="secondWidth">Selected/Pending</td>
+											<td class="secondWidth"><?php echo $result_status; ?></td>
 										</tr>
 										<tr>
 											<td>Team</td>
-											<td>.......</td>
+											<td><?php echo $result_team; ?></td>
 										</tr>
 									</table>
 								</div>	

@@ -48,85 +48,103 @@
 				<div class="col-sm-8">
 					<div class="card bg-light">
 						    <div class="card-body">
-							    <form action="" method="" enctype="">
+							    <form action="dao/adddata.dao.php" method="POST" enctype="">
 		                            <h2 class="text-center" style="margin-bottom:20px;" >Candidate Information</h2>
+		                            <hr>
+		                            <?php 
+								if (isset($_GET['error'])) {
+									echo '<label class="text-center" style="color: red;">
+																<!-- If no candidate found -->
+																Try Again
+															</label>';
 
+								}else if(isset($_GET['success'])){echo '<label class="text-center" style="color: green;">
+																<!-- If no candidate found -->
+																Data Added Successfully
+															</label>';
+														}
+
+													
+								?>
+		                            <h4 class="text-center">General Information</h4>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">ID: </label>
+			                            <label for="ID" class="control-label col-sm-3">ID: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="1111"/>
+			                                <input class="form-control" type="text" name="ad_idno" id="ID" placeholder="1111"required=""/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Name: </label>
+			                            <label for="Name" class="control-label col-sm-3">Name: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="Jone Doe"/>
+			                                <input class="form-control" type="text" name="ad_name" id="Name" placeholder="Jone Doe" required="" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Email: </label>
+			                            <label for="Email" class="control-label col-sm-3">Email: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="a@gmail.com"/>
+			                                <input class="form-control" type="text" name="ad_email" id="Email" placeholder="a@gmail.com" required="" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Date of Birth: </label>
+			                            <label for="Bdate" class="control-label col-sm-3">Date of Birth: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="19/06/2020"/>
+			                                <input class="form-control" type="text" name="ad_birthdate" id="Bdate" placeholder="19/06/2020" required="" />
 			                            </div>
 			                        </div>
-			                        <div class="form-group row" style="margin-bottom:10px;">
+			                        <h4 class="text-center">Interview Information</h4>
+			                        <!-- <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="" class="control-label col-sm-3">Interview Date: </label>
 			                            <div class="col-sm-9">
 			                                <input class="form-control" type="" name="" id="" placeholder="19/06/2020"/>
 			                            </div>
-			                        </div>
+			                        </div> -->
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Interview Time: </label>
+			                            <label for="InterviewTime" class="control-label col-sm-3">Interview Time: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="9 AM"/>
+			                                <input class="form-control" type="text" name="ad_interview_time" id="InterviewTime" placeholder="9 AM"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label class="control-label col-sm-3">Interview Status: </label>
+			                            <label for="interview_platform" class="control-label col-sm-3">Interview Platform: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="Pending"/>
+			                                <input class="form-control" type="text" name="ad_interview_platform" id="interview_platform" placeholder="Zoom"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label class="control-label col-sm-3">Interview Platform: </label>
+			                            <label for="interview_link" class="control-label col-sm-3">Interview Link: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="Zoom"/>
+			                                <input class="form-control" type="text" name="ad_interview_link" id="interview_link" placeholder="Interview Link"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Interview Link: </label>
+			                            <label for="interview_id" class="control-label col-sm-3">Interview ID: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="Interview Link"/>
+			                                <input class="form-control" type="text" name="ad_interview_id" id="interview_id" placeholder="1000000"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Zoom ID: </label>
+			                            <label for="interview_pass" class="control-label col-sm-3">Interview Pass: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="1000000"/>
+			                                <input class="form-control" type="text" name="ad_interview_pass" id="interview_pass" placeholder="3reBV"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Zoom Pass: </label>
+			                            <label for="interview_status" class="control-label col-sm-3">Interview Status: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="3reBV"/>
+			                                <input class="form-control" type="text" name="ad_interview_status" id="interview_status" placeholder="Pending"/>
+			                            </div>
+			                        </div>			                        
+			                        <h4 class="text-center">Result</h4>
+			                        <div class="form-group row" style="margin-bottom:10px;">
+			                            <label for="result_status" class="control-label col-sm-3">Status: </label>
+			                            <div class="col-sm-9">
+			                                <input class="form-control" type="text" name="ad_result_status" id="result_status"placeholder="Selected/Pending"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Status: </label>
+			                            <label for="result_team" class="control-label col-sm-3">Team: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id=""placeholder="Selected/Pending"/>
-			                            </div>
-			                        </div>
-			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Team: </label>
-			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" placeholder="Team Name"/>
+			                                <input class="form-control" type="text" name="ad_result_team" id="result_team" placeholder="Team Name"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">

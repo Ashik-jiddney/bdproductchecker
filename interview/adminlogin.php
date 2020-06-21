@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if (isset($_SESSION['admin'])) {
+	header("Location: /interview/admin_Home.php");
+	exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +55,17 @@
 					<div class="card-body">
 						<h5 class="card-title text-center">ADMIN LOGIN</h5>
 						<hr>
-						<form action="" method="">
+						<form action="admin_Home.php" method="post">
+						<?php 
+								if (isset($_GET['error'])) {
+									echo '<label class="text-center" style="color: red;">
+																<!-- If no candidate found -->
+																Wrong Username/Email or Password
+															</label>';
+
+								}
+													
+								?>
 							<div style="margin-bottom:10px; color: gray;">
 							<span >Username/E-mail :</span>
                             <input class="form-control" type="text" name="username" placeholder="Username/E-mail" value="" required=""/>

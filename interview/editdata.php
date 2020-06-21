@@ -1,4 +1,12 @@
+<?php 
+session_start();
+	if (!isset($_SESSION['admin'])) {
+  require "dao/adminlogin.dao.php";
+}
 
+require 'dao/singleDataFetch.dao.php';
+
+ ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -48,85 +56,88 @@
 				<div class="col-sm-8">
 					<div class="card bg-light">
 						    <div class="card-body">
-							    <form action="" method="" enctype="">
+							    <form action="dao/update.dao.php" method="POST" enctype="">
 		                            <h2 class="text-center" style="margin-bottom:20px;" >Edit Information</h2>
 
+			                        <h4 class="text-center">General Information</h4>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">ID: </label>
+			                            <label for="ID" class="control-label col-sm-3">ID: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="1111"/>
+			                                <input class="form-control" type="text" name="ad_idno" id="ID" value="<?php echo $idno; ?>" required=""/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Name: </label>
+			                            <label for="Name" class="control-label col-sm-3">Name: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="Jone Doe"/>
+			                                <input class="form-control" type="text" name="ad_name" id="Name" value="<?php echo $name; ?>" required="" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Email: </label>
+			                            <label for="Email" class="control-label col-sm-3">Email: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="a@gmail.com"/>
+			                                <input class="form-control" type="text" name="ad_email" id="Email" value="<?php echo $email; ?>" required="" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Date of Birth: </label>
+			                            <label for="Bdate" class="control-label col-sm-3">Date of Birth: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="19/06/2020"/>
+			                                <input class="form-control" type="text" name="ad_birthdate" id="Bdate" value="<?php echo $birthdate; ?>" required="" />
 			                            </div>
 			                        </div>
-			                        <div class="form-group row" style="margin-bottom:10px;">
+			                        <h4 class="text-center">Interview Information</h4>
+			                        <!-- <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="" class="control-label col-sm-3">Interview Date: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="19/06/2020"/>
+			                                <input class="form-control" type="" name="" id="" placeholder="19/06/2020"/>
+			                            </div>
+			                        </div> -->
+			                        <div class="form-group row" style="margin-bottom:10px;">
+			                            <label for="InterviewTime" class="control-label col-sm-3">Interview Time</label>
+			                            <div class="col-sm-9">
+			                                <input class="form-control" type="text" name="ad_interview_time" id="InterviewTime" value="<?php echo $interview_date; ?>"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Interview Time: </label>
+			                            <label for="interview_platform" class="control-label col-sm-3">Interview Platform: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="9 AM"/>
+			                                <input class="form-control" type="text" name="ad_interview_platform" id="interview_platform" value="<?php echo $interview_platform; ?>" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label class="control-label col-sm-3">Interview Status: </label>
+			                            <label for="interview_link" class="control-label col-sm-3">Interview Link: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="Pending"/>
+			                                <input class="form-control" type="text" name="ad_interview_link" id="interview_link" value="<?php echo $interview_link; ?>"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label class="control-label col-sm-3">Interview Platform: </label>
+			                            <label for="interview_id" class="control-label col-sm-3">Interview ID: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="Zoom"/>
+			                                <input class="form-control" type="text" name="ad_interview_id" id="interview_id" value="<?php echo $interview_id; ?>" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Interview Link: </label>
+			                            <label for="interview_pass" class="control-label col-sm-3">Interview Pass: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="Interview Link"/>
+			                                <input class="form-control" type="text" name="ad_interview_pass" id="interview_pass" value="<?php echo $interview_pass; ?>" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Zoom ID: </label>
+			                            <label for="interview_status" class="control-label col-sm-3">Interview Status: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="1000000"/>
+			                                <input class="form-control" type="text" name="ad_interview_status" id="interview_status" value="<?php echo $interview_status; ?>" />
+			                            </div>
+			                        </div>			                        
+			                        <h4 class="text-center">Result</h4>
+			                        <div class="form-group row" style="margin-bottom:10px;">
+			                            <label for="result_status" class="control-label col-sm-3">Status: </label>
+			                            <div class="col-sm-9">
+			                                <input class="form-control" type="text" name="ad_result_status" id="result_status" value="<?php echo $result_status; ?>" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Zoom Pass: </label>
+			                            <label for="result_team" class="control-label col-sm-3">Team: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="3reBV"/>
-			                            </div>
-			                        </div>
-			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Status: </label>
-			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="Selected/Pending"/>
-			                            </div>
-			                        </div>
-			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="" class="control-label col-sm-3">Team: </label>
-			                            <div class="col-sm-9">
-			                                <input class="form-control" type="" name="" id="" value="Team Name"/>
+			                                <input class="form-control" type="text" name="ad_result_team" id="result_team" value="<?php echo $result_team; ?>" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">

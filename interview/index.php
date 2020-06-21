@@ -32,21 +32,32 @@
 					<div class="card-body">
 						<h5 class="card-title text-center">CANDIDATE LOGIN</h5>
 						<hr>
-						<form action="" method="">
+						<form action="candidateinfo.php" method="post">
+							<?php 
+								if (isset($_GET['error'])) {
+									echo '<label class="text-center" style="color: red;">
+																<!-- If no candidate found -->
+																Candidate not found
+															</label>';
+
+								}
+													
+								?>
 							<div style="margin-bottom:10px; color: gray;">
 							<span >E-mail :</span>
                             <input class="form-control" type="email" name="email" placeholder="E-mail" value="" required=""/>
                         	</div>
                         	<div style="margin-bottom:10px; color: gray;">
                         		<span>  Birth Date :</span>
-                        		<input class="form-control" type="text"  id="picker" />
+                        		<input class="form-control" type="text"  id="picker" name="birthdate" />
                         	</div>
                         	<div>
     	                        <input class="btn btn-outline-primary" type="submit" value="Submit" name="submit" />
                         	</div>
+
 						</form>
-						<hr>
-						<label>Not found</label>
+						<!-- <hr>
+						<label>Not found</label> -->
 					</div>
 				</div>
 			</div>
