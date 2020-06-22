@@ -79,7 +79,7 @@ $('#picker').datetimepicker({
 	timepicker : false,
 	datepicker : true,
 	format : 'Y-m-d',
-	value : '1990-1-1'
+	value : '1995-6-15'
 });
 </script>
 </body>

@@ -16,7 +16,7 @@ require 'dao/singleDataFetch.dao.php';
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="a.css">
+	<link rel="stylesheet" type="text/css" href="style/main.css">
 	<title>Admin | Amar iSchool Interview</title>
 	<style type="text/css">
 		body{
@@ -42,9 +42,16 @@ require 'dao/singleDataFetch.dao.php';
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- <ul class="navbar-nav mr-auto">
-        </ul> -->
-          <a class="btn btn-danger my-2 my-sm-1 ml-auto" href="adminlogin.php">LOGOUT</a>
+        <ul class="navbar-nav ml-auto">
+        <li>
+        	<a class="btn btn-outline-secondary my-2 my-sm-1 ml-auto" href="adminlogin.php">ADMIN PANEL</a>	
+        </li>
+        &nbsp
+        <li>
+        <a class="btn btn-danger my-2 my-sm-1 ml-auto" href="adminlogin.php">LOGOUT</a>
+        </li>        
+        </ul>
+    	
       </div>
     </div>
     </nav>
@@ -81,7 +88,7 @@ require 'dao/singleDataFetch.dao.php';
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="Bdate" class="control-label col-sm-3">Date of Birth: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_birthdate" id="Bdate" value="<?php echo $birthdate; ?>" required="" />
+			                                <input class="form-control" type="text" name="ad_birthdate" id="picker" value="<?php echo $birthdate; ?>" required="" />
 			                            </div>
 			                        </div>
 			                        <h4 class="text-center">Interview Information</h4>
@@ -94,7 +101,7 @@ require 'dao/singleDataFetch.dao.php';
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="InterviewTime" class="control-label col-sm-3">Interview Time</label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_time" id="InterviewTime" value="<?php echo $interview_date; ?>"/>
+			                                <input class="form-control" type="text" name="ad_interview_time" id="picker2" value="<?php echo $interview_date; ?>"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
@@ -163,8 +170,23 @@ require 'dao/singleDataFetch.dao.php';
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script type="text/javascript" src="a.js"></script>
+<script type="text/javascript" src="style/main.js"></script>
 
-  
+ <script>
+$('#picker').datetimepicker({
+	timepicker : false,
+	datepicker : true,
+	format : 'Y-m-d',
+	value : '1995-6-15'
+});
+$('#picker2').datetimepicker({
+	timepicker : true,
+	datepicker : true,
+	// format	: 'Y-m-d h:m',
+	value	: '2020-6-24 17:30'
+})
+</script>
+
+
 </body>
 </html>

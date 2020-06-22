@@ -12,6 +12,12 @@ if (!isset($_SESSION['admin'])) {
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<title>Admin | Amar iSchool Interview</title>
     <link rel="stylesheet" href="style/style.css">
+
+ <!-- new satrt for Table-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <!-- new end For Table-->
+
 	<style type="text/css">
 	
         th,td{
@@ -52,7 +58,7 @@ if (!isset($_SESSION['admin'])) {
 
         <!-- Table-Content -->
         <div class='mt-5'>
-        <table class='table table-bordered'>
+        <table id= "dataTable" class='table table-bordered'>
         <thead class='thead-light'>
         
   <tr>
@@ -95,7 +101,7 @@ if (!isset($_SESSION['admin'])) {
                         <td>'.$interview_date.'</td>
                         <td>'.$interview_time.'</td>
                         <td>'.$row['interview_platform'].'</td>
-                        <td>'.$row['interview_link'].'</td>
+                        <td><a href="'.$row['interview_link'].'">Interview Link</a></td>
                         <td>'.$row['interview_id'].'</td>
                         <td>'.$row['interview_pass'].'</td>
                         <td>'.$row['interview_status'].'</td>
@@ -109,46 +115,12 @@ if (!isset($_SESSION['admin'])) {
 
         ?>
   </tbody>
- <!--  <tr>
-                        <td>1</td>
-                        <td>Ali Mohammad</td>
-                        <td>Email@gmail.com</td>
-                        <td>20/2/1998</td>
-                        <td>12/07/2020</td>
-                        <td>8:30 AM</td>
-                        <td>ZOOM</td>
-                        <td>hgfhgdf</td>
-                        <td>567395454</td>
-                        <td>udf5444jj</td>
-                        <td>Checked</td>
-                        <td>Pending</td>
-                        <td>00Don</td>
-                        <td><a href='editdata.php' class=' text-warning'>Edit</a></td>
-                        <td><a href='candidateinfo.php' class=' text-danger'>Delete</a></td>
-  </tr>
-  <tr>
-                        <td>1</td>
-                        <td>Ali Mohammad</td>
-                        <td>Email@gmail.com</td>
-                        <td>20/2/1998</td>
-                        <td>12/07/2020</td>
-                        <td>8:30 AM</td>
-                        <td>ZOOM</td>
-                        <td>hgfhgdf</td>
-                        <td>567395454</td>
-                        <td>udf5444jj</td>
-                        <td>Checked</td>
-                        <td>Pending</td>
-                        <td>00Don</td>
-                        <td><a href='editdata.php' class=' text-warning'>Edit</a></td>
-                        <td><a href='candidateinfo.php' class=' text-danger'>Delete</a></td>
-  </tr> -->
 </table>
     
         
 
             <!-- update database -->
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-center">
                 <button id='update_database' class='btn btn-danger text-light'>Update Data</button>
             </div>
         </div>
@@ -162,6 +134,21 @@ if (!isset($_SESSION['admin'])) {
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<!-- Table Jquery Part Start -->
+<script>
+$(document).ready(function() {
+    $('#dataTable').DataTable();
+} );
+
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>  
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Table Jquery Part End -->
 
 </body>
 </html>

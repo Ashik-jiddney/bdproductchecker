@@ -2,7 +2,7 @@
 
 	require 'dbconnection.php';
 
-	$idno = base64_decode($_GET['id']);
+	$idno = base64_decode($_GET['idno']);
 	//echo $id;
 	// DELETE FROM `candidates` WHERE 0
 	$sql = "DELETE FROM `candidates` WHERE idno=?";
