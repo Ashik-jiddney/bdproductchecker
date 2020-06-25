@@ -24,7 +24,7 @@ if (!mysqli_stmt_prepare($stmt, $sql)) {
   header("Location: /interview/adddata.php?error=sqlerror");
   exit();
 } else {
-  mysqli_stmt_bind_param($stmt, "isssssssssss",$idno, $name, $email, $birthdate, $interview_time, $interview_platform, $interview_link, $interview_id, $interview_pass, $interview_status, $result_status, $result_team);
+  mysqli_stmt_bind_param($stmt, "ssssssssssss",$idno, $name, $email, $birthdate, $interview_time, $interview_platform, $interview_link, $interview_id, $interview_pass, $interview_status, $result_status, $result_team);
   $dataInsertion = mysqli_stmt_execute($stmt);
   // $result = mysqli_stmt_get_result($stmt);
   // if ($row = mysqli_fetch_assoc($result)) {

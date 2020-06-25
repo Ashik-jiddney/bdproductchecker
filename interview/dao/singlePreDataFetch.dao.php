@@ -4,11 +4,11 @@ require "dbconnection.php";
 
 $idno = base64_decode($_GET['idno']);
 
-$sql = "SELECT * FROM candidates WHERE idno=?";
+$sql = "SELECT * FROM pre_candidates WHERE idno=?";
 $stmt = mysqli_stmt_init($conn);
 
 if (!mysqli_stmt_prepare($stmt, $sql)) {
-  header("Location: /interview/admin_Home.php");
+  header("Location: /interview/admin_Home.php?error=hi");
   exit();
 } else {
   // echo $username . "  " . $password . "<br>";
@@ -34,7 +34,7 @@ if (!mysqli_stmt_prepare($stmt, $sql)) {
     $result_status = $row['result_status'];
     $result_team = $row['result_team'];
   } else {
-  header("Location: /interview/admin_Home.php");
+  header("Location: /interview/admin_Home.php?error=greaterror");
     exit();
   }
 }

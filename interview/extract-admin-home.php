@@ -6,6 +6,7 @@ if (!isset($_SESSION['admin'])) {
 //echo $_SESSION['adminEmail'] . "<br>";
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,25 +24,24 @@ if (!isset($_SESSION['admin'])) {
 	<?php include 'admin-nav.php'; ?>
     <section id='admin-home' class="container-fluid">
         <div class='header'>
-            <h1 class='display-4 text-center text-dark mb-5' >Admin Home</h1>
+            <h1 class='display-4 text-center text-dark mb-5' >Admin Home <sup class='text-danger h3'>Extract</sup></h1>
         </div>
         <div class='row'>
             <div class="col-md-2">
-            <a href="adddata.php">
+            <!-- <a href="adddata.php">
             <button class='btn btn-primary text-light '>Add Data</button> </a>
+            < -->
             </div>
             <div class=" col-md-2">
-            
-          <!-- upload -->
-          <!-- <form action='uploadfile.php' method="post" enctype="multipart/form-data">
-            <input type='file' name='fileToUpload' required >
+            <!-- <form action="admin_home.php" method="post" enctype="multipart/form-data">
+            <input type='file'name='fileToUpload'>
             <button id='upload' type="submit" class='btn btn-info mt-2' name='uploadfile'>Upload</button>
-          </form> -->
+            </form> -->
                 
             </div>
         </div>
        
-        <!-- Filter options -->
+       <!-- Filter options -->
         <!-- <div class="dropdown mt-5">
           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
             Category
@@ -52,9 +52,18 @@ if (!isset($_SESSION['admin'])) {
             <a class="dropdown-item" href="#">Sort 3</a>
           </div>
         </div> -->
-        <?php // include 'interview-running.php'; ?>
+
         <!-- Table-Content -->
-        <div class='mt-5'>
+        <?php
+            if (isset($_GET['filename'])) {
+              require_once "parsingdata.php";
+              require_once "dao/preupload.dao.php";
+            }
+        ?>
+
+            
+                
+<div class='mt-5'>
         <table class='table table-bordered'>
         <thead class='thead-light'>
         
@@ -84,14 +93,14 @@ if (!isset($_SESSION['admin'])) {
   </thead>
   <tbody>
       <?php 
-         require 'dao/allDataFetching.dao.php';
+         require 'dao/allPreDataFetching.dao.php';
          while ($row = mysqli_fetch_assoc($result)) {
             $splitTimeStamp = explode(" ", $row['interview_time']);
             $interview_date = $splitTimeStamp[0];
             $interview_time = $splitTimeStamp[1];
          echo '
             <tr>
-                        <td><a href="candidateinfo.php?idno='.base64_encode($row['idno']).'">'.$row['idno'].'</a></td>
+                        <td>'.$row['idno'].'</td>
                         <td>'.$row['name'].'</td>
                         <td>'.$row['email'].'</td>
                         <td>'.$row['birthdate'].'</td>
@@ -104,8 +113,8 @@ if (!isset($_SESSION['admin'])) {
                         <td>'.$row['interview_status'].'</td>
                         <td>'.$row['result_status'].'</td>
                         <td>'.$row['result_team'].'</td>
-                        <td><a href="editdata.php?idno='.base64_encode($row['idno']).'" class="text-warning">Edit</a></td>
-                        <td><a href="deletedata.php?idno='.base64_encode($row['idno']).'" class="text-danger">Delete</a></td>
+                        <td><a href="editpredata.php?idno='.base64_encode($row['idno']).'" class="text-warning">Edit</a></td>
+                        <td><a href="deletepredata.php?idno='.base64_encode($row['idno']).'" class="text-danger">Delete</a></td>
             </tr>
          ';
          }
@@ -120,6 +129,32 @@ if (!isset($_SESSION['admin'])) {
             <div class="d-flex justify-content-end">
                 <button id='update_database' class='btn btn-danger text-light'>Update Data</button>
             </div> -->
+        </div>
+
+          <div class='row mt-5'>
+            <div class='col-md-6 d-flex justify-content-start'>
+            <form action="cancelUpdate.php" method="post">
+              <button type='submit' name='updateToDb' id='cancel-update' class='btn btn-secondary text-light mx-2'>Cancel</button>
+            </form>
+            </div>
+
+            <div class='col-md-6 d-flex justify-content-end'>
+            <form action="updatedb.php" method="post">
+              <button type='submit' name='updateToDb' id='update_database' class='btn btn-danger text-light'>Update Data</button>
+            </form>
+            </div>
+          </div>
+            
+            
+            <!-- <div class="row"> -->
+            <!-- cancel
+            <div class="col-md-6 d-flex justify-content-start"><a href='admin_home.php' id='cancel-update' class='btn btn-secondary text-light mx-2'>Cancel</a></div> -->
+            <!-- update database -->
+            <!-- <div class="col-md-6 d-flex justify-content-end"><a href='admin_home.php' id='update_database' class='btn btn-danger text-light'>Update Data</a></div>
+              
+             -->
+              
+            </div>
         </div>
     </section>
 	

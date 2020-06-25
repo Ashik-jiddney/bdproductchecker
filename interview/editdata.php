@@ -48,7 +48,7 @@ require 'dao/singleDataFetch.dao.php';
         </li>
         &nbsp
         <li>
-        <a class="btn btn-danger my-2 my-sm-1 ml-auto" href="adminlogin.php">LOGOUT</a>
+        <a class="btn btn-danger my-2 my-sm-1 ml-auto" href="logout.php">LOGOUT</a>
         </li>        
         </ul>
     	
@@ -101,7 +101,7 @@ require 'dao/singleDataFetch.dao.php';
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="InterviewTime" class="control-label col-sm-3">Interview Time</label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_time" id="picker2" value="<?php echo $interview_date; ?>"/>
+			                                <input class="form-control" type="text" name="ad_interview_time" id="picker2" value="<?php echo $interview_date_time; ?>"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
@@ -148,9 +148,9 @@ require 'dao/singleDataFetch.dao.php';
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                        	<div class="col-sm-3"></div>
-			                        	<div class="col-sm-9">
+			                        	<div class="col-sm-9 offset-sm-3">
 			                        		<input type="submit" value="Update" name="submit" class="btn btn-info"></input>
+			                        		<a href="admin_Home.php" class="btn btn-secondary text-light">Cancel</a>
 			                        	</div>
 			                        </div>
 		                        </form> 
@@ -175,18 +175,12 @@ require 'dao/singleDataFetch.dao.php';
  <script>
 $('#picker').datetimepicker({
 	timepicker : false,
-	datepicker : true,
-	format : 'Y-m-d',
-	value : '1995-6-15'
+	datepicker : true
 });
 $('#picker2').datetimepicker({
 	timepicker : true,
-	datepicker : true,
-	// format	: 'Y-m-d h:m',
-	value	: '2020-6-24 17:30'
-})
+	datepicker : true
 </script>
-
 
 </body>
 </html>

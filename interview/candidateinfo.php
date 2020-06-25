@@ -69,8 +69,7 @@ session_start();
 							<h4 class="card-title text-center">CANDIDATE INFORMATION</h4>
 							<hr>
 							<div class="row">
-								<div class="col-sm-1"></div>
-								<div class="col-sm-10">
+								<div class="col-sm-10 offset-sm-1">
 									<table class="table bg-white" style="width:100%">
 										<tr>
 											<td class="firstWidth">ID</td>
@@ -120,7 +119,25 @@ session_start();
 										</tr>
 										<tr>
 											<td>Interview Time</td>
-											<td><?php echo $interview_time; ?></td>
+											<?php 
+													function to12HourFormat($time) {
+														$splitTime = explode(":", $time);
+														$m = "AM";
+														$hour = (int) $splitTime[0];
+														$minute = (int) $splitTime[1];
+														$second = (int) $splitTime[2];
+														if ($hour >= 12) {
+															$m = "PM";
+														}
+														$hour = $hour % 12;
+														if ($hour == 0) $hour = 12;
+														echo str_pad($hour, 2, "0", STR_PAD_LEFT);
+														echo ":";
+														echo str_pad($minute, 2, "0", STR_PAD_LEFT);
+														echo " " . $m;
+													}
+											?>
+											<td><?php echo to12HourFormat($interview_time); ?></td>
 										</tr>
 										<tr>
 											<td class="firstWidth">Interview Platform</td>
@@ -168,7 +185,7 @@ session_start();
 							</div>
 							 -->
 							<hr>
-							
+											
 							<div class="row">
 								<div class="col-sm-1"></div>
 								<div class="col-sm-10">
@@ -185,7 +202,18 @@ session_start();
 									</table>
 								</div>	
 							</div>
-<!-- 
+
+							<div class="row">
+								<div class="col-sm-10 offset-sm-1">
+									<?php 
+										if(isset($_SESSION['admin'])){
+											echo '<a class="btn btn-primary" href="editdata.php?idno='.base64_encode($row['idno']).'">Edit Data</a>
+											<a href="admin_Home.php" class="btn btn-secondary text-light">Cancel</a>';
+										}
+									?>
+								</div>	
+							</div>
+<!-- 						
 							<div class="row">
 								<div class="col-sm-4"><h5>Status :</h5></div>
 								<div class="col-sm-8"><h5>Pending/Selected/...</h5></div>

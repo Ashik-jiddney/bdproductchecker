@@ -1,11 +1,12 @@
 <?php 
 session_start();
-if (!isset($_SESSION['admin'])) {
+	if (!isset($_SESSION['admin'])) {
   require "dao/adminlogin.dao.php";
 }
-//echo $_SESSION['adminEmail'] . "<br>";
-?>
 
+require 'dao/singlePreDataFetch.dao.php';
+
+ ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -62,47 +63,32 @@ if (!isset($_SESSION['admin'])) {
 				<div class="col-sm-8">
 					<div class="card bg-light">
 						    <div class="card-body">
-							    <form action="dao/adddata.dao.php" method="POST" enctype="">
-		                            <h2 class="text-center" style="margin-bottom:20px;" >Candidate Information</h2>
-		                            <hr>
-		                            <?php 
-								if (isset($_GET['error'])) {
-									echo '<label class="text-center" style="color: red;">
-																<!-- If no candidate found -->
-																Try Again
-															</label>';
+							    <form action="dao/updatepre.dao.php" method="POST" enctype="">
+		                            <h2 class="text-center" style="margin-bottom:20px;" >Edit Information <sup class='text-danger h3'>Extract</sup> </h2>
 
-								}else if(isset($_GET['success'])){echo '<label class="text-center" style="color: green;">
-																<!-- If no candidate found -->
-																Data Added Successfully
-															</label>';
-														}
-
-													
-								?>
-		                            <h4 class="text-center">General Information</h4>
+			                        <h4 class="text-center">General Information</h4>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="ID" class="control-label col-sm-3">ID: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_idno" id="ID" placeholder="1111"required=""/>
+			                                <input class="form-control" type="text" name="ad_idno" id="ID" value="<?php echo $idno; ?>" required=""/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="Name" class="control-label col-sm-3">Name: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_name" id="Name" placeholder="Jone Doe" required="" />
+			                                <input class="form-control" type="text" name="ad_name" id="Name" value="<?php echo $name; ?>" required="" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="Email" class="control-label col-sm-3">Email: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_email" id="Email" placeholder="a@gmail.com" required="" />
+			                                <input class="form-control" type="text" name="ad_email" id="Email" value="<?php echo $email; ?>" required="" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label class="control-label col-sm-3">Date of Birth: </label>
+			                            <label for="Bdate" class="control-label col-sm-3">Date of Birth: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_birthdate" id="picker" required="" />
+			                                <input class="form-control" type="text" name="ad_birthdate" id="picker" value="<?php echo $birthdate; ?>" required="" />
 			                            </div>
 			                        </div>
 			                        <h4 class="text-center">Interview Information</h4>
@@ -113,59 +99,58 @@ if (!isset($_SESSION['admin'])) {
 			                            </div>
 			                        </div> -->
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="InterviewTime" class="control-label col-sm-3">Interview Time: </label>
+			                            <label for="InterviewTime" class="control-label col-sm-3">Interview Time</label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_time" id="picker2"/>
+			                                <input class="form-control" type="text" name="ad_interview_time" id="picker2" value="<?php echo $interview_date_time; ?>"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="interview_platform" class="control-label col-sm-3">Interview Platform: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_platform" id="interview_platform" placeholder="Zoom"/>
+			                                <input class="form-control" type="text" name="ad_interview_platform" id="interview_platform" value="<?php echo $interview_platform; ?>" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="interview_link" class="control-label col-sm-3">Interview Link: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_link" id="interview_link" placeholder="Interview Link"/>
+			                                <input class="form-control" type="text" name="ad_interview_link" id="interview_link" value="<?php echo $interview_link; ?>"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="interview_id" class="control-label col-sm-3">Interview ID: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_id" id="interview_id" placeholder="1000000"/>
+			                                <input class="form-control" type="text" name="ad_interview_id" id="interview_id" value="<?php echo $interview_id; ?>" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="interview_pass" class="control-label col-sm-3">Interview Pass: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_pass" id="interview_pass" placeholder="3reBV"/>
+			                                <input class="form-control" type="text" name="ad_interview_pass" id="interview_pass" value="<?php echo $interview_pass; ?>" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="interview_status" class="control-label col-sm-3">Interview Status: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_status" id="interview_status" placeholder="Pending"/>
+			                                <input class="form-control" type="text" name="ad_interview_status" id="interview_status" value="<?php echo $interview_status; ?>" />
 			                            </div>
 			                        </div>			                        
 			                        <h4 class="text-center">Result</h4>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="result_status" class="control-label col-sm-3">Status: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_result_status" id="result_status"placeholder="Selected/Pending"/>
+			                                <input class="form-control" type="text" name="ad_result_status" id="result_status" value="<?php echo $result_status; ?>" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="result_team" class="control-label col-sm-3">Team: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_result_team" id="result_team" placeholder="Team Name"/>
+			                                <input class="form-control" type="text" name="ad_result_team" id="result_team" value="<?php echo $result_team; ?>" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                        	<!-- <div class="col-sm-3"></div> -->
-			                        	<div class="col-sm-9 offset-sm-3">
-			                        		<input type="submit" value="Add To Database" name="submit" class="btn btn-info"></input>
-			                        		<a href="admin_Home.php" class="btn btn-secondary text-light">Cancel</a>
+			                        	<div class="col-sm-3"></div>
+			                        	<div class="col-sm-9">
+			                        		<input type="submit" value="Update" name="submit" class="btn btn-info"></input>
 			                        	</div>
 			                        </div>
 		                        </form> 
@@ -187,19 +172,17 @@ if (!isset($_SESSION['admin'])) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script type="text/javascript" src="style/main.js"></script>
 
-<script>
+ <script>
 $('#picker').datetimepicker({
 	timepicker : false,
-	datepicker : true,
-	format : 'Y-m-d',
-	value : '1995-6-15'
+	datepicker : true
 });
 $('#picker2').datetimepicker({
 	timepicker : true,
-	datepicker : true,
-	format	: 'Y-m-d h:m',
-	value	: '2020-6-24 17:30'
+	datepicker : true
 })
 </script>
+
+
 </body>
 </html>

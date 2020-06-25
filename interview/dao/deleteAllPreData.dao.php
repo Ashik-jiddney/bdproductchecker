@@ -5,7 +5,7 @@
 	$idno = base64_decode($_GET['idno']);
 	//echo $id;
 	// DELETE FROM `candidates` WHERE 0
-	$sql = "DELETE FROM `candidates` WHERE idno=?";
+	$sql = "DELETE FROM `pre_candidates`";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
     header("Location: /interview/admin_Home.php");

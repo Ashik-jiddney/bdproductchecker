@@ -16,7 +16,7 @@ $interview_status = $_POST['ad_interview_status'];
 $result_status = $_POST['ad_result_status'];
 $result_team = $_POST['ad_result_team'];
 
-$sql = "UPDATE `candidates` SET `idno`=?,`name`=?,`email`=?,`birthdate`=?,`interview_time`=?,`interview_platform`=?,`interview_link`=?,`interview_id`=?,`interview_pass`=?,`interview_status`=?,`result_status`=?,`result_team`=? WHERE `idno`=?";
+$sql = "UPDATE `pre_candidates` SET `idno`=?,`name`=?,`email`=?,`birthdate`=?,`interview_time`=?,`interview_platform`=?,`interview_link`=?,`interview_id`=?,`interview_pass`=?,`interview_status`=?,`result_status`=?,`result_team`=? WHERE `idno`=?";
 
 $stmt = mysqli_stmt_init($conn);
 
@@ -24,10 +24,10 @@ if (!mysqli_stmt_prepare($stmt, $sql)) {
   header("Location: /interview/admin_Home.php");
   exit();
 } else {
-  mysqli_stmt_bind_param($stmt, "sssssssssssss",$idno, $name, $email, $birthdate, $interview_time, $interview_platform, $interview_link, $interview_id, $interview_pass, $interview_status, $result_status, $result_team,$idno);
+  mysqli_stmt_bind_param($stmt, "sssssssssssss",$idno, $name, $email, $birthdate, $interview_time, $interview_platform, $interview_link, $interview_id, $interview_pass, $interview_status, $result_status, $result_team, $idno);
   $dataInsertion = mysqli_stmt_execute($stmt);
   if ($dataInsertion) {
-     header("Location: /interview/admin_Home.php");
+     header("Location: /interview/extract-admin-home.php");
   }else {
     header("Location: /interview/admin_Home.php");
     exit();
