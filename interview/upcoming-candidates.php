@@ -1,5 +1,5 @@
 <?php
-require 'dao/allRunningDataFetching.dao.php';
+require 'dao/allUpcomingCandidatesDataFetching.dao.php';
 
 if($result->num_rows>0){
 echo '
@@ -7,7 +7,7 @@ echo '
         <table class="table table-bordered">
         <thead class="thead-light">
         <tr>
-            <th colspan="15" style="background-color: #ffffcc; font-size:15px">Interview Running</th>
+            <th colspan="15" style="background-color: #d9ffb3; font-size:15px">Upcoming Candidate</th>
         </tr>
   <tr>
     <th colspan="4">General Info</th>

@@ -1,13 +1,13 @@
 <?php
-require 'dao/allRunningDataFetching.dao.php';
+require 'dao/allUpdateStatusDataFetching.dao.php';
 
 if($result->num_rows>0){
 echo '
 <div class="mt-5">
         <table class="table table-bordered">
-        <thead class="thead-light">
+        <thead class="thead-light" style="background-color: #ffffcc;" >
         <tr>
-            <th colspan="15" style="background-color: #ffffcc; font-size:15px">Interview Running</th>
+            <th colspan="15" style="background-color: #b3ccff; font-size:15px">Update Interview Status</th>
         </tr>
   <tr>
     <th colspan="4">General Info</th>

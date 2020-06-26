@@ -52,10 +52,12 @@ if (!isset($_SESSION['admin'])) {
             <a class="dropdown-item" href="#">Sort 3</a>
           </div>
         </div> -->
-        <?php // include 'interview-running.php'; ?>
+        <div class="mt-5"><?php  //include 'interview-running.php';?></div>
+        <div class="mt-5"><?php  include 'upcoming-candidates.php';?></div>
+        <div class="mt-5"><?php include 'update-status.php';?></div>
         <!-- Table-Content -->
-        <div class='mt-5'>
-        <table class='table table-bordered'>
+        <div class="mt-5">
+        <table class='table table-bordered mt-5'>
         <thead class='thead-light'>
         
   <tr>
