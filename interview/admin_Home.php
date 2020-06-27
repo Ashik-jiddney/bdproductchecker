@@ -52,14 +52,16 @@ if (!isset($_SESSION['admin'])) {
             <a class="dropdown-item" href="#">Sort 3</a>
           </div>
         </div> -->
-        <div class="mt-5"><?php  //include 'interview-running.php';?></div>
+        <div class="mt-5"><?php  include 'interview-running.php';?></div>
         <div class="mt-5"><?php  include 'upcoming-candidates.php';?></div>
         <div class="mt-5"><?php include 'update-status.php';?></div>
         <!-- Table-Content -->
         <div class="mt-5">
         <table class='table table-bordered mt-5'>
         <thead class='thead-light'>
-        
+        <tr>
+          <th colspan="15" style="font-size:15px">All Candidates List</th>
+        </tr>
   <tr>
     <th colspan='4'>General Info</th>
     <th colspan="7">Interview Info</th>
@@ -100,7 +102,7 @@ if (!isset($_SESSION['admin'])) {
                         <td>'.$interview_date.'</td>
                         <td>'.$interview_time.'</td>
                         <td>'.$row['interview_platform'].'</td>
-                        <td>'.$row['interview_link'].'</td>
+                        <td><a href="'.$row['interview_link'].'">Interview Link</a></td>
                         <td>'.$row['interview_id'].'</td>
                         <td>'.$row['interview_pass'].'</td>
                         <td>'.$row['interview_status'].'</td>

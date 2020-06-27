@@ -7,7 +7,7 @@ echo '
         <table class="table table-bordered">
         <thead class="thead-light">
         <tr>
-            <th colspan="15" style="background-color: #ffffcc; font-size:15px">Interview Running</th>
+            <th colspan="15" style="background-color: #ffffcc; font-size:15px">Interview Running...</th>
         </tr>
   <tr>
     <th colspan="4">General Info</th>
@@ -48,7 +48,7 @@ echo '
                         <td>'.$interview_date.'</td>
                         <td>'.$interview_time.'</td>
                         <td>'.$row['interview_platform'].'</td>
-                        <td>'.$row['interview_link'].'</td>
+                        <td><a href="'.$row['interview_link'].'">Interview Link</a></td>
                         <td>'.$row['interview_id'].'</td>
                         <td>'.$row['interview_pass'].'</td>
                         <td>'.$row['interview_status'].'</td>

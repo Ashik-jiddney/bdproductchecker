@@ -48,7 +48,7 @@ echo '
                         <td>'.$interview_date.'</td>
                         <td>'.$interview_time.'</td>
                         <td>'.$row['interview_platform'].'</td>
-                        <td>'.$row['interview_link'].'</td>
+                        <td><a href="'.$row['interview_link'].'">Interview Link</a></td>
                         <td>'.$row['interview_id'].'</td>
                         <td>'.$row['interview_pass'].'</td>
                         <td>'.$row['interview_status'].'</td>
