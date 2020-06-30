@@ -11,6 +11,9 @@ if (isset($_SESSION['admin'])) {
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 	<title>Admin Login | Amar iSchool</title>
+	<!-- font-awesome-css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 	<style type="text/css">
 		html, body{ height:100%; margin:0;}
 	body{

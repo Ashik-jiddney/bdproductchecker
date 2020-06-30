@@ -1,12 +1,11 @@
 <?php 
 session_start();
-	if (!isset($_SESSION['admin'])) {
+if (!isset($_SESSION['admin'])) {
   require "dao/adminlogin.dao.php";
 }
+//echo $_SESSION['adminEmail'] . "<br>";
+?>
 
-require 'dao/singlePreDataFetch.dao.php';
-
- ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,6 +17,9 @@ require 'dao/singlePreDataFetch.dao.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="style/main.css">
 	<title>Admin | Amar iSchool Interview</title>
+	 <!-- font-awesome-css -->
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   
 	<style type="text/css">
 		body{
 			/*background-color: #f8f9fa !important;*/
@@ -63,32 +65,47 @@ require 'dao/singlePreDataFetch.dao.php';
 				<div class="col-sm-8">
 					<div class="card bg-light">
 						    <div class="card-body">
-							    <form action="dao/updatepre.dao.php" method="POST" enctype="">
-		                            <h2 class="text-center" style="margin-bottom:20px;" >Edit Information <sup class='text-danger h3'>Extract</sup> </h2>
+							    <form action="dao/adddata.dao.php" method="POST" enctype="">
+		                            <h2 class="text-center" style="margin-bottom:20px;" >Candidate Information</h2>
+		                            <hr>
+		                            <?php 
+								if (isset($_GET['error'])) {
+									echo '<label class="text-center" style="color: red;">
+																<!-- If no candidate found -->
+																Try Again
+															</label>';
 
-			                        <h4 class="text-center">General Information</h4>
+								}else if(isset($_GET['success'])){echo '<label class="text-center" style="color: green;">
+																<!-- If no candidate found -->
+																Data Added Successfully
+															</label>';
+														}
+
+													
+								?>
+		                            <h4 class="text-center">General Information</h4>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="ID" class="control-label col-sm-3">ID: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_idno" id="ID" value="<?php echo $idno; ?>" required=""/>
+			                                <input class="form-control" type="text" name="ad_idno" id="ID" placeholder="1111"required=""/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="Name" class="control-label col-sm-3">Name: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_name" id="Name" value="<?php echo $name; ?>" required="" />
+			                                <input class="form-control" type="text" name="ad_name" id="Name" placeholder="Jone Doe" required="" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="Email" class="control-label col-sm-3">Email: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_email" id="Email" value="<?php echo $email; ?>" required="" />
+			                                <input class="form-control" type="text" name="ad_email" id="Email" placeholder="a@gmail.com" required="" />
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="Bdate" class="control-label col-sm-3">Date of Birth: </label>
+			                            <label class="control-label col-sm-3">Date of Birth: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_birthdate" id="picker" value="<?php echo $birthdate; ?>" required="" />
+			                                <input class="form-control" type="text" name="ad_birthdate" id="picker" required="" />
 			                            </div>
 			                        </div>
 			                        <h4 class="text-center">Interview Information</h4>
@@ -99,58 +116,59 @@ require 'dao/singlePreDataFetch.dao.php';
 			                            </div>
 			                        </div> -->
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                            <label for="InterviewTime" class="control-label col-sm-3">Interview Time</label>
+			                            <label for="InterviewTime" class="control-label col-sm-3">Interview Time: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_time" id="picker2" value="<?php echo $interview_date_time; ?>"/>
+			                                <input class="form-control" type="text" name="ad_interview_time" id="picker2"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="interview_platform" class="control-label col-sm-3">Interview Platform: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_platform" id="interview_platform" value="<?php echo $interview_platform; ?>" />
+			                                <input class="form-control" type="text" name="ad_interview_platform" id="interview_platform" placeholder="Zoom"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="interview_link" class="control-label col-sm-3">Interview Link: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_link" id="interview_link" value="<?php echo $interview_link; ?>"/>
+			                                <input class="form-control" type="text" name="ad_interview_link" id="interview_link" placeholder="Interview Link"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="interview_id" class="control-label col-sm-3">Interview ID: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_id" id="interview_id" value="<?php echo $interview_id; ?>" />
+			                                <input class="form-control" type="text" name="ad_interview_id" id="interview_id" placeholder="1000000"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="interview_pass" class="control-label col-sm-3">Interview Pass: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_pass" id="interview_pass" value="<?php echo $interview_pass; ?>" />
+			                                <input class="form-control" type="text" name="ad_interview_pass" id="interview_pass" placeholder="3reBV"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="interview_status" class="control-label col-sm-3">Interview Status: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_interview_status" id="interview_status" value="<?php echo $interview_status; ?>" />
+			                                <input class="form-control" type="text" name="ad_interview_status" id="interview_status" placeholder="Pending"/>
 			                            </div>
 			                        </div>			                        
 			                        <h4 class="text-center">Result</h4>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="result_status" class="control-label col-sm-3">Status: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_result_status" id="result_status" value="<?php echo $result_status; ?>" />
+			                                <input class="form-control" type="text" name="ad_result_status" id="result_status"placeholder="Selected/Pending"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
 			                            <label for="result_team" class="control-label col-sm-3">Team: </label>
 			                            <div class="col-sm-9">
-			                                <input class="form-control" type="text" name="ad_result_team" id="result_team" value="<?php echo $result_team; ?>" />
+			                                <input class="form-control" type="text" name="ad_result_team" id="result_team" placeholder="Team Name"/>
 			                            </div>
 			                        </div>
 			                        <div class="form-group row" style="margin-bottom:10px;">
-			                        	<div class="col-sm-3"></div>
-			                        	<div class="col-sm-9">
-			                        		<input type="submit" value="Update" name="submit" class="btn btn-info"></input>
+			                        	<!-- <div class="col-sm-3"></div> -->
+			                        	<div class="col-sm-9 offset-sm-3">
+			                        		<input type="submit" value="Add To Database" name="submit" class="btn btn-info"></input>
+			                        		<a href="admin_Home.php" class="btn btn-secondary text-light">Cancel</a>
 			                        	</div>
 			                        </div>
 		                        </form> 
@@ -172,17 +190,17 @@ require 'dao/singlePreDataFetch.dao.php';
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script type="text/javascript" src="style/main.js"></script>
 
- <script>
+<script>
 $('#picker').datetimepicker({
 	timepicker : false,
-	datepicker : true
+	datepicker : true,
+	format : 'Y-m-d'
 });
 $('#picker2').datetimepicker({
 	timepicker : true,
-	datepicker : true
+	datepicker : true,
+	format	: 'Y-m-d H:i:s'
 })
 </script>
-
-
 </body>
 </html>

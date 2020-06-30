@@ -1,13 +1,13 @@
 <?php
-require 'dao/allUpcomingCandidatesDataFetching.dao.php';
+require 'dao/allUpdateStatusDataFetching.dao.php';
 
 if($result->num_rows>0){
 echo '
 <div class="mt-5">
-        <table class="table table-bordered">
-        <thead class="thead-light">
+        <table id="dataTable3" class="table table-bordered">
+        <thead class="thead-light" style="background-color: #ffffcc;" >
         <tr>
-            <th colspan="15" style="background-color: #d9ffb3; font-size:15px">Upcoming Candidate</th>
+            <th colspan="15" style="background-color: #b3ccff; font-size:15px">Update Interview Status</th>
         </tr>
   <tr>
     <th colspan="4">General Info</th>
@@ -46,9 +46,9 @@ echo '
                         <td>'.$row['email'].'</td>
                         <td>'.$row['birthdate'].'</td>
                         <td>'.$interview_date.'</td>
-                        <td>'.$interview_time.'</td>
+                        <td>'.to12HourFormat($interview_time).'</td>
                         <td>'.$row['interview_platform'].'</td>
-                        <td><a href="'.$row['interview_link'].'">Interview Link</a></td>
+                        <td>'.$row['interview_link'].'</td>
                         <td>'.$row['interview_id'].'</td>
                         <td>'.$row['interview_pass'].'</td>
                         <td>'.$row['interview_status'].'</td>
